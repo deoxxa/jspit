@@ -1,0 +1,24 @@
+{
+  "name": "jspit",
+  "version": "0.0.0",
+  "description": "Streaming configurably terminated JSON serialiser",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/deoxxa/jspit.git"
+  },
+  "keywords": [
+    "json",
+    "serialise",
+    "serialize",
+    "stream",
+    "newline",
+    "split",
+    "whitespace"
+  ],
+  "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
+  "license": "BSD",
+  "dependencies": {
+    "steez": "~0.4.2"
+  }
+}
