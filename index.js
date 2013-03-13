@@ -1,8 +1,8 @@
-var Steez = require("steez"),
+var stream = require("stream"),
     util = require("util");
 
 var JSpit = module.exports = function JSpit(terminator) {
-  Steez.call(this);
+  stream.Transform.call(this, {objectMode: true});
 
   if (typeof terminator === "undefined") {
     this.terminator = "\n";
@@ -10,10 +10,10 @@ var JSpit = module.exports = function JSpit(terminator) {
     this.terminator = terminator;
   }
 };
-util.inherits(JSpit, Steez);
+util.inherits(JSpit, stream.Transform);
 
-JSpit.prototype.write = function write(data) {
-  this.emit("data", JSON.stringify(data) + this.terminator);
+JSpit.prototype._transform = function _transform(input, encoding, done) {
+  this.push(JSON.stringify(input) + "\n");
 
-  return !this.paused && this.writable;
+  return done();
 };

@@ -4,13 +4,11 @@ var JSpit = require("./index");
 
 var jspit = new JSpit("\n");
 
-jspit.on("data", function(e) {
-  process.stdout.write(e);
-});
-
 jspit.on("error", function(e) {
   console.log(e);
 });
+
+jspit.pipe(process.stdout);
 
 jspit.write({a: "b", c: "d"});
 jspit.write({a: "b", c: "d"});
