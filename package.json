@@ -1,6 +1,6 @@
 {
   "name": "jspit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Streaming configurably terminated JSON serialiser",
   "main": "index.js",
   "repository": {
