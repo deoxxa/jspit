@@ -1,13 +1,19 @@
 var stream = require("stream"),
     util = require("util");
 
-var JSpit = module.exports = function JSpit(terminator) {
-  stream.Transform.call(this, {objectMode: true});
+var JSpit = module.exports = function JSpit(options) {
+  if (typeof options === "string") {
+    options = {terminator: string};
+  }
 
-  if (typeof terminator === "undefined") {
+  options = options || {};
+
+  stream.Transform.call(this, {objectMode: true, highWaterMark: options.highWaterMark || 8});
+
+  if (typeof options.terminator === "undefined") {
     this.terminator = "\n";
   } else {
-    this.terminator = terminator;
+    this.terminator = options.terminator;
   }
 };
 util.inherits(JSpit, stream.Transform);
